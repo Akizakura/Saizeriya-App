@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:duration="240"
+    android:interpolator="@anim/easing_01"
+    android:fillAfter="true">
+    <scale
+        android:fromXScale="0.99"
+        android:fromYScale="0.99"
+        android:toXScale="1"
+        android:toYScale="1"
+        android:pivotX="50%"
+        android:pivotY="50%"/>
+    <translate
+        android:fromXDelta="40"
+        android:fromYDelta="0"
+        android:toXDelta="0"
+        android:toYDelta="0"/>
+</set>

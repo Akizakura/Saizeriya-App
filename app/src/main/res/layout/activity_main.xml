@@ -1,0 +1,654 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:shadow="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FAFAFA"
+    tools:context=".MainActivity">
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:allowClickWhenDisabled="false"
+        android:scrollbars="none"
+        tools:ignore="MissingConstraints">
+
+        <LinearLayout
+            android:id="@+id/linear_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="30dip" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <HorizontalScrollView
+                    android:id="@+id/explore_scrollView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:allowClickWhenDisabled="false"
+                    android:overScrollMode="never"
+                    android:scrollbars="none"
+                    tools:ignore="MissingConstraints">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <!--すべて!-->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="horizontal">
+
+                                <Space
+                                    android:layout_width="10dip"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1" />
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="10dip"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <Button
+                                        android:id="@+id/explore_all_button"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="70dip"
+                                        android:background="@drawable/explore_rounded_corner"
+                                        android:fontFamily="@font/font_genjyuugothicx_m"
+                                        android:gravity="center"
+                                        android:paddingLeft="30dip"
+                                        android:paddingRight="30dip"
+                                        android:text="@string/explore_all"
+                                        android:textColor="@color/black"
+                                        android:textSize="20sp"
+                                        shadow:backgroundTint="@null" />
+                                    <View
+                                        android:id="@+id/explore_all_view"
+                                        android:layout_width="20dip"
+                                        android:layout_height="7dip"
+                                        android:layout_marginTop="6dip"
+                                        android:background="@drawable/explore_selected_rounded_corner" />
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                            <!--前菜!-->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="horizontal">
+
+                                <Space
+                                    android:layout_width="10dip"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1" />
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="10dip"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <Button
+                                        android:id="@+id/explore_appetizer_button"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="70dip"
+                                        android:background="@drawable/explore_rounded_corner"
+                                        android:fontFamily="@font/font_genjyuugothicx_m"
+                                        android:gravity="center"
+                                        android:paddingLeft="30dip"
+                                        android:paddingRight="30dip"
+                                        android:text="@string/explore_appetizer"
+                                        android:textColor="@color/black_1"
+                                        android:textSize="20sp"
+                                        shadow:backgroundTint="@null" />
+
+                                    <View
+                                        android:id="@+id/explore_appetizer_view"
+                                        android:layout_width="20dip"
+                                        android:layout_height="7dip"
+                                        android:layout_marginTop="6dip"
+                                        android:background="@drawable/explore_selected_rounded_corner"
+                                        android:visibility="invisible" />
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                            <!--サラダ!-->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="horizontal">
+
+                                <Space
+                                    android:layout_width="10dip"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1" />
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="10dip"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <Button
+                                        android:id="@+id/explore_salad_button"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="70dip"
+                                        android:background="@drawable/explore_rounded_corner"
+                                        android:fontFamily="@font/font_genjyuugothicx_m"
+                                        android:gravity="center"
+                                        android:paddingLeft="30dip"
+                                        android:paddingRight="30dip"
+                                        android:text="@string/explore_salad"
+                                        android:textColor="@color/black_1"
+                                        android:textSize="20sp"
+                                        shadow:backgroundTint="@null" />
+
+                                    <View
+                                        android:id="@+id/explore_salad_view"
+                                        android:layout_width="20dip"
+                                        android:layout_height="7dip"
+                                        android:layout_marginTop="6dip"
+                                        android:background="@drawable/explore_selected_rounded_corner"
+                                        android:visibility="invisible" />
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                            <!--スープ!-->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="horizontal">
+
+                                <Space
+                                    android:layout_width="10dip"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1" />
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="10dip"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <Button
+                                        android:id="@+id/explore_soup_button"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="70dip"
+                                        android:background="@drawable/explore_rounded_corner"
+                                        android:fontFamily="@font/font_genjyuugothicx_m"
+                                        android:gravity="center"
+                                        android:paddingLeft="30dip"
+                                        android:paddingRight="30dip"
+                                        android:text="@string/explore_soup"
+                                        android:textColor="@color/black_1"
+                                        android:textSize="20sp"
+                                        shadow:backgroundTint="@null" />
+
+                                    <View
+                                        android:id="@+id/explore_soup_view"
+                                        android:layout_width="20dip"
+                                        android:layout_height="7dip"
+                                        android:layout_marginTop="6dip"
+                                        android:background="@drawable/explore_selected_rounded_corner"
+                                        android:visibility="invisible" />
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                            <!--ピザ!-->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="horizontal">
+
+                                <Space
+                                    android:layout_width="10dip"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1" />
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="10dip"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <Button
+                                        android:id="@+id/explore_pizza_button"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="70dip"
+                                        android:background="@drawable/explore_rounded_corner"
+                                        android:fontFamily="@font/font_genjyuugothicx_m"
+                                        android:gravity="center"
+                                        android:paddingLeft="30dip"
+                                        android:paddingRight="30dip"
+                                        android:text="@string/explore_pizza"
+                                        android:textColor="@color/black_1"
+                                        android:textSize="20sp"
+                                        shadow:backgroundTint="@null" />
+
+                                    <View
+                                        android:id="@+id/explore_pizza_view"
+                                        android:layout_width="20dip"
+                                        android:layout_height="7dip"
+                                        android:layout_marginTop="6dip"
+                                        android:background="@drawable/explore_selected_rounded_corner"
+                                        android:visibility="invisible" />
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                            <!--ドリア!-->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="horizontal">
+
+                                <Space
+                                    android:layout_width="10dip"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1" />
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="10dip"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <Button
+                                        android:id="@+id/explore_doria_button"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="70dip"
+                                        android:background="@drawable/explore_rounded_corner"
+                                        android:fontFamily="@font/font_genjyuugothicx_m"
+                                        android:gravity="center"
+                                        android:paddingLeft="30dip"
+                                        android:paddingRight="30dip"
+                                        android:text="@string/explore_doria"
+                                        android:textColor="@color/black_1"
+                                        android:textSize="20sp"
+                                        shadow:backgroundTint="@null" />
+
+                                    <View
+                                        android:id="@+id/explore_doria_view"
+                                        android:layout_width="20dip"
+                                        android:layout_height="7dip"
+                                        android:layout_marginTop="6dip"
+                                        android:background="@drawable/explore_selected_rounded_corner"
+                                        android:visibility="invisible" />
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                            <!--パスタ!-->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="horizontal">
+
+                                <Space
+                                    android:layout_width="10dip"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1" />
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="10dip"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <Button
+                                        android:id="@+id/explore_pasta_button"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="70dip"
+                                        android:background="@drawable/explore_rounded_corner"
+                                        android:fontFamily="@font/font_genjyuugothicx_m"
+                                        android:gravity="center"
+                                        android:paddingLeft="30dip"
+                                        android:paddingRight="30dip"
+                                        android:text="@string/explore_pasta"
+                                        android:textColor="@color/black_1"
+                                        android:textSize="20sp"
+                                        shadow:backgroundTint="@null" />
+
+
+                                    <View
+                                        android:id="@+id/explore_pasta_view"
+                                        android:layout_width="20dip"
+                                        android:layout_height="7dip"
+                                        android:layout_marginTop="6dip"
+                                        android:background="@drawable/explore_selected_rounded_corner"
+                                        android:visibility="invisible" />
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                            <!--ハンバーグ!-->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="horizontal">
+
+                                <Space
+                                    android:layout_width="10dip"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1" />
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="10dip"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <Button
+                                        android:id="@+id/explore_hamburg_button"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="70dip"
+                                        android:background="@drawable/explore_rounded_corner"
+                                        android:fontFamily="@font/font_genjyuugothicx_m"
+                                        android:gravity="center"
+                                        android:paddingLeft="30dip"
+                                        android:paddingRight="30dip"
+                                        android:text="@string/explore_hamburg"
+                                        android:textColor="@color/black_1"
+                                        android:textSize="20sp"
+                                        shadow:backgroundTint="@null" />
+
+                                    <View
+                                        android:id="@+id/explore_hamburg_view"
+                                        android:layout_width="20dip"
+                                        android:layout_height="7dip"
+                                        android:layout_marginTop="6dip"
+                                        android:background="@drawable/explore_selected_rounded_corner"
+                                        android:visibility="invisible" />
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                            <!--チキン!-->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="horizontal">
+
+                                <Space
+                                    android:layout_width="10dip"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1" />
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="10dip"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <Button
+                                        android:id="@+id/explore_chicken_button"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="70dip"
+                                        android:background="@drawable/explore_rounded_corner"
+                                        android:fontFamily="@font/font_genjyuugothicx_m"
+                                        android:gravity="center"
+                                        android:paddingLeft="30dip"
+                                        android:paddingRight="30dip"
+                                        android:text="@string/explore_chicken"
+                                        android:textColor="@color/black_1"
+                                        android:textSize="20sp"
+                                        shadow:backgroundTint="@null" />
+
+                                    <View
+                                        android:id="@+id/explore_chicken_view"
+                                        android:layout_width="20dip"
+                                        android:layout_height="7dip"
+                                        android:layout_marginTop="6dip"
+                                        android:background="@drawable/explore_selected_rounded_corner"
+                                        android:visibility="invisible" />
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                            <!--デザート!-->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="horizontal">
+
+                                <Space
+                                    android:layout_width="10dip"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1" />
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="10dip"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <Button
+                                        android:id="@+id/explore_dessert_button"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="70dip"
+                                        android:background="@drawable/explore_rounded_corner"
+                                        android:fontFamily="@font/font_genjyuugothicx_m"
+                                        android:gravity="center"
+                                        android:paddingLeft="30dip"
+                                        android:paddingRight="30dip"
+                                        android:text="@string/explore_dessert"
+                                        android:textColor="@color/black_1"
+                                        android:textSize="20sp"
+                                        shadow:backgroundTint="@null" />
+
+                                    <View
+                                        android:id="@+id/explore_dessert_view"
+                                        android:layout_width="20dip"
+                                        android:layout_height="7dip"
+                                        android:layout_marginTop="6dip"
+                                        android:background="@drawable/explore_selected_rounded_corner"
+                                        android:visibility="invisible" />
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                            <!--パンとライス!-->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="horizontal">
+
+                                <Space
+                                    android:layout_width="10dip"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1" />
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="10dip"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <Button
+                                        android:id="@+id/explore_side_button"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="70dip"
+                                        android:background="@drawable/explore_rounded_corner"
+                                        android:fontFamily="@font/font_genjyuugothicx_m"
+                                        android:gravity="center"
+                                        android:paddingLeft="30dip"
+                                        android:paddingRight="30dip"
+                                        android:text="@string/explore_side"
+                                        android:textColor="@color/black_1"
+                                        android:textSize="20sp"
+                                        shadow:backgroundTint="@null" />
+
+                                    <View
+                                        android:id="@+id/explore_side_view"
+                                        android:layout_width="20dip"
+                                        android:layout_height="7dip"
+                                        android:layout_marginTop="6dip"
+                                        android:background="@drawable/explore_selected_rounded_corner"
+                                        android:visibility="invisible" />
+
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <!--ドリンク!-->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="horizontal">
+
+                                <Space
+                                    android:layout_width="10dip"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1" />
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="10dip"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <Button
+                                        android:id="@+id/explore_drink_button"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="70dip"
+                                        android:background="@drawable/explore_rounded_corner"
+                                        android:fontFamily="@font/font_genjyuugothicx_m"
+                                        android:gravity="center"
+                                        android:paddingLeft="30dip"
+                                        android:paddingRight="30dip"
+                                        android:text="@string/explore_drink"
+                                        android:textColor="@color/black_1"
+                                        android:textSize="20sp"
+                                        shadow:backgroundTint="@null" />
+
+                                    <View
+                                        android:id="@+id/explore_drink_view"
+                                        android:layout_width="20dip"
+                                        android:layout_height="7dip"
+                                        android:layout_marginTop="6dip"
+                                        android:background="@drawable/explore_selected_rounded_corner"
+                                        android:visibility="invisible" />
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </HorizontalScrollView>
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dip" />
+
+            <LinearLayout
+                android:id="@+id/main_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"></LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/menu_card_last_button"
+                android:layout_width="wrap_content"
+                android:layout_height="70dip"
+                android:layout_marginLeft="10dip"
+                android:layout_marginBottom="10dip"
+                android:background="@drawable/order_box_empty_rounded_corner"
+                android:fontFamily="@font/font_genjyuugothicx_m"
+                android:gravity="center"
+                android:text="@string/order_box"
+                android:textColor="@color/black_1"
+                android:textSize="20sp"
+                app:backgroundTint="@null" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom|right"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/setting_button"
+                android:layout_width="70dip"
+                android:layout_height="70dip"
+                android:layout_marginRight="10dip"
+                android:layout_marginBottom="10dip"
+                android:background="@drawable/setting_rounded_corner"
+                android:fontFamily="@font/font_genjyuugothicx_m"
+                android:gravity="center"
+                app:backgroundTint="@null" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

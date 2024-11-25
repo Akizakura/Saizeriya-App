@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="12dip"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingLeft="12dip"
+    android:paddingRight="12dip"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/menu_card_last_button"
+        android:layout_width="match_parent"
+        android:layout_height="100dip"
+        android:layout_marginBottom="150dip"
+        android:background="@drawable/menu_card_last_rounded_corner"
+        android:fontFamily="@font/font_genjyuugothicx_m"
+        android:gravity="center"
+        app:backgroundTint="@null" />
+
+</LinearLayout>

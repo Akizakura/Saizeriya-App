@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">Saizeriya</string>
+    <string name="history">Menu History</string>
+    <string name="explore_all">ALL</string>
+    <string name="explore_appetizer">Appetizer</string>
+    <string name="explore_salad">Salad</string>
+    <string name="explore_soup">Soup</string>
+    <string name="explore_pizza">Pizza</string>
+    <string name="explore_doria">Doria</string>
+    <string name="explore_pasta">Pasta</string>
+    <string name="explore_hamburg">Hamburg</string>
+    <string name="explore_chicken">Chicken</string>
+    <string name="explore_dessert">Dessert</string>
+    <string name="explore_side">Bread and rice</string>
+    <string name="explore_drink">Drink</string>
+    <string name="recommended">Today Recommendation</string>
+    <string name="history_null">Nothing yet</string>
+    <string name="order_box">OrderBox</string>
+    <string name="preset">preset</string>
+    <string name="load">Load</string>
+    <string name="save">Save</string>
+    <string name="Q_save">Do you want to save?</string>
+    <string name="D_load">Do you want to delete it?</string>
+    <string name="order">Create an order book</string>
+    <string name="remove_history">Clear your history</string>
+    <string name="alert_message">Do you want to apply it?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="id">Menu number</string>
+    <string name="count">Count</string>
+    <string name="reset">Reset</string>
+    <string name="reset_des">Reset the order box</string>
+</resources>

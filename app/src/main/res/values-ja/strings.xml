@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">Saizeriya</string>
+    <string name="history">よく見るメニュー</string>
+    <string name="explore_all">すべて</string>
+    <string name="explore_appetizer">前菜</string>
+    <string name="explore_salad">サラダ</string>
+    <string name="explore_soup">スープ</string>
+    <string name="explore_pizza">ピザ</string>
+    <string name="explore_doria">ドリア</string>
+    <string name="explore_pasta">パスタ</string>
+    <string name="explore_hamburg">ハンバーグ</string>
+    <string name="explore_chicken">チキン</string>
+    <string name="explore_dessert">デザート</string>
+    <string name="explore_side">パンとライス</string>
+    <string name="explore_drink">ドリンク</string>
+    <string name="recommended">今日のおすすめ</string>
+    <string name="history_null">まだ何もありません</string>
+    <string name="order_box">注文かご</string>
+    <string name="preset">プリセット</string>
+    <string name="load">読み込む</string>
+    <string name="save">保存</string>
+    <string name="Q_save">注文表を保存しますか？</string>
+    <string name="D_load">削除しますか？</string>
+    <string name="order">注文表を作成する</string>
+    <string name="remove_history">履歴を消去する</string>
+    <string name="alert_message">適用しますか？</string>
+    <string name="yes">はい</string>
+    <string name="no">いいえ</string>
+    <string name="id">メニュー番号</string>
+    <string name="count">数量</string>
+    <string name="reset">リセットする</string>
+    <string name="reset_des">注文表をリセットする</string>
+</resources>

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="393dp"
+    android:layout_height="136dp"
+    android:layout_marginTop="4dp"
+    android:layout_gravity="center"
+    android:orientation="horizontal">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/menu_material"
+        android:layout_width="381dp"
+        android:layout_height="120dp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="6dp"
+        android:layout_marginTop="6dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="4dp"
+        app:strokeColor="#00000000"
+        app:cardBackgroundColor="#FAFAFA">
+
+        <GridLayout
+            android:id="@+id/menu_main"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#FAFAFA"
+            android:orientation="horizontal">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                app:cardCornerRadius="12dp"
+                app:strokeColor="#00000000">
+
+                <ImageView
+                    android:id="@+id/menu_imageview"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:elevation="8dp"
+                    android:scaleType="centerCrop" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="24dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/menu_title_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="5dp"
+                    android:fontFamily="@font/font_genjyuugothicx_m"
+                    android:text="Unknown"
+                    android:textColor="#000000"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/menu_id_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/font_genjyuugothicx_m"
+                    android:text="0000"
+                    android:textColor="#C0C0C0"
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </GridLayout>
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="end"
+            app:cardCornerRadius="12dp"
+            app:strokeColor="#00000000">
+
+            <GridLayout
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:background="#F3F3F3">
+
+                <GridLayout
+                    android:layout_width="32dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|end"
+                    android:layout_marginRight="8dp"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/menu_up_button"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:scaleType="centerCrop"
+                        android:scaleX="0.6"
+                        android:scaleY="0.6"
+                        android:src="@drawable/equilateral_triangle_top" />
+
+                    <TextView
+                        android:id="@+id/menu_count_textview"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:fontFamily="@font/font_genjyuugothicx_m"
+                        android:text="0"
+                        android:textColor="#000000"
+                        android:textSize="14sp" />
+
+                    <ImageView
+                        android:id="@+id/menu_down_button"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:scaleType="centerCrop"
+                        android:scaleX="0.6"
+                        android:scaleY="0.6"
+                        android:src="@drawable/equilateral_triangle_bottom" />
+                </GridLayout>
+            </GridLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </com.google.android.material.card.MaterialCardView>
+</GridLayout>

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="10dip"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="192dip"
+        android:layout_height="340dip"
+        android:background="@drawable/rounded_corner"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dip"
+            app:cardCornerRadius="18dip"
+            app:cardElevation="0dip">
+
+            <ImageView
+                android:id="@+id/history_img"
+                android:layout_width="170dip"
+                android:layout_height="170dip"
+                android:background="@color/white_1"
+                android:scaleType="centerCrop" />
+        </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dip"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/history_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dip"
+                android:layout_marginRight="12dip"
+                android:fontFamily="@font/font_genjyuugothicx_m"
+                android:text="Unknown"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/history_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dip"
+                android:layout_marginRight="12dip"
+                android:fontFamily="@font/font_genjyuugothicx_m"
+                android:text="0000"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/history_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dip"
+                android:layout_marginRight="12dip"
+                android:fontFamily="@font/font_genjyuugothicx_m"
+                android:gravity="right"
+                android:text="¥00000"
+                android:textSize="17sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="12dip"
+            android:layout_marginTop="10dip"
+            android:layout_marginRight="12dip"
+            android:layout_marginBottom="10dip"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/history_minus_button"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/minus_button_gradient"
+                app:backgroundTint="@null" />
+
+            <TextView
+                android:id="@+id/history_orderbox_count"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/font_genjyuugothicx_m"
+                android:gravity="center"
+                android:text="0"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/history_add_button"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/add_button_gradient"
+                app:backgroundTint="@null" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
