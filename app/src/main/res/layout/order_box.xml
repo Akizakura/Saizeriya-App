@@ -4,16 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FAFAFA">
+    android:background="#FAFAFA"
+    tools:context=".MainActivity">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/order_box_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="100dip"
+                    android:layout_marginBottom="100dip"
+                    android:orientation="vertical"></LinearLayout>
+
+            </LinearLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -28,8 +43,8 @@
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dip"
-                        android:layout_marginLeft="10dip">
+                        android:layout_marginLeft="10dip"
+                        android:layout_marginTop="10dip">
 
                         <Button
                             android:id="@+id/order_box_back_button"
@@ -50,8 +65,8 @@
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="10dip"
-                        android:layout_marginTop="10dip">
+                        android:layout_marginTop="10dip"
+                        android:layout_marginRight="10dip">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -59,7 +74,7 @@
                             android:orientation="vertical">
 
                             <Button
-                                android:id="@+id/order_box_preset_button"
+                                android:id="@+id/preset_button"
                                 android:layout_width="wrap_content"
                                 android:layout_height="70dip"
                                 android:layout_weight="1"
@@ -74,21 +89,38 @@
                                 app:iconTint="@color/black" />
 
                             <Button
+                                android:id="@+id/share_button"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dip"
+                                android:layout_marginTop="10dip"
+                                android:layout_weight="1"
+                                android:background="@drawable/preset_options_rounded_corner"
+                                android:gravity="center"
+                                android:text="@string/share"
+                                android:textColor="@color/black"
+                                android:textSize="18sp"
+                                android:visibility="invisible"
+                                app:backgroundTint="@null"
+                                app:icon="@drawable/mobile_screen_share"
+                                app:iconSize="24sp"
+                                app:iconTint="@color/black" />
+
+                            <Button
                                 android:id="@+id/load_preset_button"
                                 android:layout_width="match_parent"
                                 android:layout_height="50dip"
                                 android:layout_marginTop="10dip"
                                 android:layout_weight="1"
-                                android:background="@drawable/preset_rounded_corner"
+                                android:background="@drawable/preset_options_rounded_corner"
                                 android:gravity="center"
                                 android:text="@string/load"
                                 android:textColor="@color/black"
                                 android:textSize="18sp"
+                                android:visibility="invisible"
                                 app:backgroundTint="@null"
                                 app:icon="@drawable/arrow_downward"
                                 app:iconSize="24sp"
-                                app:iconTint="@color/black"
-                                android:visibility="invisible"/>
+                                app:iconTint="@color/black" />
 
                             <Button
                                 android:id="@+id/save_preset_button"
@@ -96,33 +128,23 @@
                                 android:layout_height="50dip"
                                 android:layout_marginTop="10dip"
                                 android:layout_weight="1"
-                                android:background="@drawable/preset_rounded_corner"
+                                android:background="@drawable/preset_options_rounded_corner"
                                 android:gravity="center"
                                 android:text="@string/save"
                                 android:textColor="@color/black"
                                 android:textSize="18sp"
+                                android:visibility="invisible"
                                 app:backgroundTint="@null"
                                 app:icon="@drawable/check_icon"
                                 app:iconSize="24sp"
-                                app:iconTint="@color/black"
-                                android:visibility="invisible"/>
+                                app:iconTint="@color/black" />
                         </LinearLayout>
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <LinearLayout
-                android:id="@+id/order_box_container"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"></LinearLayout>
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="100dip" />
-
-        </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
     <androidx.constraintlayout.widget.ConstraintLayout

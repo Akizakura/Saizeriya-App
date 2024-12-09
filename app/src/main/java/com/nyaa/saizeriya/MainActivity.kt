@@ -1,6 +1,7 @@
 package com.nyaa.saizeriya
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Color
@@ -18,7 +19,10 @@ import android.widget.ScrollView
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.textfield.TextInputEditText
 import com.google.gson.reflect.TypeToken
+import com.google.zxing.integration.android.IntentIntegrator
+import com.journeyapps.barcodescanner.DecoratedBarcodeView
 import org.json.JSONArray
 import org.json.JSONObject
 import java.io.IOException
@@ -330,7 +334,7 @@ class MainActivity : AppCompatActivity() {
                 MotionEvent.ACTION_UP -> {
                     setContentView(R.layout.order_box)
                     val order_box_back_button = findViewById<Button>(R.id.order_box_back_button)
-                    val order_box_preset_button = findViewById<Button>(R.id.order_box_preset_button)
+                    val order_box_preset_button = findViewById<Button>(R.id.preset_button)
                     val order_box_order_button = findViewById<Button>(R.id.order_box_order_button)
 
                     order_box_back_button.setOnTouchListener{v: View, event: MotionEvent ->
@@ -573,7 +577,22 @@ class MainActivity : AppCompatActivity() {
                     order_back_button.setOnTouchListener{v: View, event: MotionEvent ->
                         when(event.action) {
                             MotionEvent.ACTION_UP -> {
-                                ShowActivityMain()
+                                setContentView(R.layout.order_box)
+                                val order_box_back_button = findViewById<Button>(R.id.order_box_back_button)
+                                val order_box_preset_button = findViewById<Button>(R.id.preset_button)
+                                val order_box_order_button = findViewById<Button>(R.id.order_box_order_button)
+
+                                order_box_back_button.setOnTouchListener{v: View, event: MotionEvent ->
+                                    when(event.action) {
+                                        MotionEvent.ACTION_UP -> {
+                                            ShowActivityMain()
+                                            false
+                                        }
+                                        else -> false
+                                    }
+                                }
+
+                                ShowOrderBoxContainer(order_box_button, order_box_animation)
                                 false
                             }
                             else -> false
@@ -644,7 +663,8 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        val order_box_preset_button = findViewById<Button>(R.id.order_box_preset_button)
+        val order_box_preset_button = findViewById<Button>(R.id.preset_button)
+        val share_button = findViewById<Button>(R.id.share_button)
         val load_preset_button = findViewById<Button>(R.id.load_preset_button)
         val save_preset_button = findViewById<Button>(R.id.save_preset_button)
         order_box_preset_button.setOnTouchListener { v: View, event: MotionEvent ->
@@ -658,14 +678,17 @@ class MainActivity : AppCompatActivity() {
                     order_box_preset_button.startAnimation(
                         AnimationUtils.loadAnimation(this, R.anim.anim_pressed_button_up))
                     if (load_preset_button.visibility != View.VISIBLE) {
+                        share_button.visibility = View.VISIBLE
                         load_preset_button.visibility = View.VISIBLE
                         save_preset_button.visibility = View.VISIBLE
                         val animation = AnimationUtils.loadAnimation(this, R.anim.anim_order_box_preset)
                         animation.interpolator = Easing.EaseOutElasticInterpolator()
+                        share_button.startAnimation(animation)
                         load_preset_button.startAnimation(animation)
                         save_preset_button.startAnimation(animation)
                     }
                     else {
+                        share_button.visibility = View.INVISIBLE
                         load_preset_button.visibility = View.INVISIBLE
                         save_preset_button.visibility = View.INVISIBLE
                     }
@@ -689,15 +712,34 @@ class MainActivity : AppCompatActivity() {
                         preset_list.forEach{
                             val includedLayout_preset_item = layoutInflater.inflate(R.layout.preset_item, preset_load_container, false)
                             val includedLayout_preset_text = includedLayout_preset_item.findViewById<TextView>(R.id.preset_item_text)
+                            val includedLayout_preset_date = includedLayout_preset_item.findViewById<TextView>(R.id.preset_date_text)
                             val includedLayout_preset_button = includedLayout_preset_item.findViewById<Button>(R.id.preset_load_button)
                             val includedLayout_preset_delete_button = includedLayout_preset_item.findViewById<Button>(R.id.preset_delete_button)
-                            includedLayout_preset_text.text = it.date
+                            includedLayout_preset_text.text = it.name
+                            includedLayout_preset_date.text = it.date
 
                             includedLayout_preset_button.setOnTouchListener {v:View, event: MotionEvent ->
                                 when(event.action) {
                                     MotionEvent.ACTION_UP -> {
                                         order_box.addAll(it.items)
-                                        ShowActivityMain()
+
+                                        setContentView(R.layout.order_box)
+                                        val order_box_back_button = findViewById<Button>(R.id.order_box_back_button)
+                                        val order_box_preset_button = findViewById<Button>(R.id.preset_button)
+                                        val order_box_order_button = findViewById<Button>(R.id.order_box_order_button)
+
+                                        order_box_back_button.setOnTouchListener{v: View, event: MotionEvent ->
+                                            when(event.action) {
+                                                MotionEvent.ACTION_UP -> {
+                                                    ShowActivityMain()
+                                                    false
+                                                }
+                                                else -> false
+                                            }
+                                        }
+
+                                        ShowOrderBoxContainer(order_box_button, order_box_animation)
+
                                         false
                                     }
                                     else -> false
@@ -716,7 +758,24 @@ class MainActivity : AppCompatActivity() {
                                                 preset_list.remove(data)
                                                 datamanager!!.saveJsonData("preset", preset_list)
                                             }
-                                            ShowActivityMain()
+
+                                            setContentView(R.layout.order_box)
+                                            val order_box_back_button = findViewById<Button>(R.id.order_box_back_button)
+                                            val order_box_preset_button = findViewById<Button>(R.id.preset_button)
+                                            val order_box_order_button = findViewById<Button>(R.id.order_box_order_button)
+
+                                            order_box_back_button.setOnTouchListener{v: View, event: MotionEvent ->
+                                                when(event.action) {
+                                                    MotionEvent.ACTION_UP -> {
+                                                        ShowActivityMain()
+                                                        false
+                                                    }
+                                                    else -> false
+                                                }
+                                            }
+
+                                            ShowOrderBoxContainer(order_box_button, order_box_animation)
+
                                         }
                                         builder.setNegativeButton(R.string.no) { dialog, which -> }
                                         builder.show()
@@ -732,7 +791,22 @@ class MainActivity : AppCompatActivity() {
                     preset_load_button.setOnTouchListener{v: View, event: MotionEvent ->
                         when(event.action) {
                             MotionEvent.ACTION_UP -> {
-                                ShowActivityMain()
+                                setContentView(R.layout.order_box)
+                                val order_box_back_button = findViewById<Button>(R.id.order_box_back_button)
+                                val order_box_preset_button = findViewById<Button>(R.id.preset_button)
+                                val order_box_order_button = findViewById<Button>(R.id.order_box_order_button)
+
+                                order_box_back_button.setOnTouchListener{v: View, event: MotionEvent ->
+                                    when(event.action) {
+                                        MotionEvent.ACTION_UP -> {
+                                            ShowActivityMain()
+                                            false
+                                        }
+                                        else -> false
+                                    }
+                                }
+
+                                ShowOrderBoxContainer(order_box_button, order_box_animation)
                                 false
                             }
                             else -> false
@@ -746,27 +820,261 @@ class MainActivity : AppCompatActivity() {
         save_preset_button.setOnTouchListener{v:View, event: MotionEvent ->
             when(event.action) {
                 MotionEvent.ACTION_UP -> {
-                    var builder = AlertDialog.Builder(this)
-                    builder.setTitle(R.string.preset)
-                    builder.setMessage(R.string.Q_save)
-                    builder.setPositiveButton(R.string.yes) { dialog, which ->
-                        val now = LocalDateTime.now()
-                        val formattedDateTime = now.format(DateTimeFormatter.ofPattern("yyyy-MM-dd-HH:mm:ss"))
-                        val preset_list = datamanager!!.getJsonData("preset", object : TypeToken<MutableList<Preset_Element>>() {})
-                        if (preset_list != null) {
-                            preset_list.add(Preset_Element(date = formattedDateTime, items = order_box))
-                            datamanager!!.saveJsonData("preset", preset_list)
-                        }
-                        else {
-                            val data: List<Preset_Element> = listOf(Preset_Element(date = formattedDateTime, items = order_box))
-                            datamanager!!.saveJsonData("preset", data)
+                    setContentView(R.layout.preset_save)
+                    val preset_save_order_box_container = findViewById<LinearLayout>(R.id.order_box_container)
+                    preset_save_order_box_container.removeAllViews()
+                    ShowOrderBoxContainerOnly(preset_save_order_box_container, order_box_button, order_box_animation)
+
+                    val preset_save_back_button = findViewById<Button>(R.id.preset_save_back_button)
+                    preset_save_back_button.setOnTouchListener{v: View, event: MotionEvent ->
+                        when(event.action) {
+                            MotionEvent.ACTION_UP -> {
+                                setContentView(R.layout.order_box)
+                                val order_box_back_button = findViewById<Button>(R.id.order_box_back_button)
+                                val order_box_preset_button = findViewById<Button>(R.id.preset_button)
+                                val order_box_order_button = findViewById<Button>(R.id.order_box_order_button)
+
+                                order_box_back_button.setOnTouchListener{v: View, event: MotionEvent ->
+                                    when(event.action) {
+                                        MotionEvent.ACTION_UP -> {
+                                            ShowActivityMain()
+                                            false
+                                        }
+                                        else -> false
+                                    }
+                                }
+
+                                ShowOrderBoxContainer(order_box_button, order_box_animation)
+                                false
+                            }
+                            else -> false
                         }
                     }
-                    builder.setNegativeButton(R.string.no) { dialog, which -> }
-                    builder.show()
+
+                    val preset_save_save_button = findViewById<Button>(R.id.preset_save_save_button)
+                    val preset_name_edittext = findViewById<TextInputEditText>(R.id.edittext_preset_name)
+                    preset_save_save_button.setOnTouchListener{v: View, event: MotionEvent ->
+                        when(event.action) {
+                            MotionEvent.ACTION_UP -> {
+                                val preset_name: String? = preset_name_edittext.text.toString().ifBlank { null }
+                                if (preset_name != null) {
+                                    val now = LocalDateTime.now()
+                                    val formattedDateTime = now.format(DateTimeFormatter.ofPattern("yyyy-MM-dd-HH:mm:ss"))
+                                    val preset_list = datamanager!!.getJsonData("preset", object : TypeToken<MutableList<Preset_Element>>() {})
+                                    if (preset_list != null) {
+                                        preset_list.add(Preset_Element(name = preset_name, date = formattedDateTime, items = order_box))
+                                        datamanager!!.saveJsonData("preset", preset_list)
+                                    }
+                                    else {
+                                        val data: List<Preset_Element> = listOf(Preset_Element(name = preset_name, date = formattedDateTime, items = order_box))
+                                        datamanager!!.saveJsonData("preset", data)
+                                    }
+
+                                    setContentView(R.layout.order_box)
+                                    val order_box_back_button = findViewById<Button>(R.id.order_box_back_button)
+                                    val order_box_preset_button = findViewById<Button>(R.id.preset_button)
+                                    val order_box_order_button = findViewById<Button>(R.id.order_box_order_button)
+
+                                    order_box_back_button.setOnTouchListener{v: View, event: MotionEvent ->
+                                        when(event.action) {
+                                            MotionEvent.ACTION_UP -> {
+                                                ShowActivityMain()
+                                                false
+                                            }
+                                            else -> false
+                                        }
+                                    }
+
+                                    ShowOrderBoxContainer(order_box_button, order_box_animation)
+                                }
+                                else {
+                                    preset_name_edittext.error = resources.getString(R.string.preset_name_error)
+                                }
+                                false
+                            }
+                            else -> false
+                        }
+                    }
                     false
                 }
                 else -> false
+            }
+        }
+        share_button.setOnTouchListener { v: View, event: MotionEvent ->
+            when (event.action) {
+                MotionEvent.ACTION_UP -> {
+
+                    if (!order_box.isEmpty()) {
+                        setContentView(R.layout.share)
+
+                        val share_back_button = findViewById<Button>(R.id.share_back_button)
+                        share_back_button.setOnTouchListener { v: View, event: MotionEvent ->
+                            when (event.action) {
+                                MotionEvent.ACTION_UP -> {
+                                    setContentView(R.layout.order_box)
+                                    val order_box_back_button =
+                                        findViewById<Button>(R.id.order_box_back_button)
+                                    val order_box_preset_button =
+                                        findViewById<Button>(R.id.preset_button)
+                                    val order_box_order_button =
+                                        findViewById<Button>(R.id.order_box_order_button)
+
+                                    order_box_back_button.setOnTouchListener { v: View, event: MotionEvent ->
+                                        when (event.action) {
+                                            MotionEvent.ACTION_UP -> {
+                                                ShowActivityMain()
+                                                false
+                                            }
+
+                                            else -> false
+                                        }
+                                    }
+
+                                    ShowOrderBoxContainer(order_box_button, order_box_animation)
+                                    false
+                                }
+
+                                else -> false
+                            }
+                        }
+
+                        val barcode_view = findViewById<ImageView>(R.id.barcode_view)
+                        val zxing_barcode_scanner =
+                            findViewById<DecoratedBarcodeView>(R.id.zxing_barcode_scanner)
+                        val decoratedbarcode_button = findViewById<Button>(R.id.decoratedbarcode_button)
+                        barcode_view.viewTreeObserver.addOnGlobalLayoutListener {
+                            val width = barcode_view.measuredWidth
+                            val params = barcode_view.layoutParams
+                            params.height = width
+                            barcode_view.layoutParams = params
+                            zxing_barcode_scanner.layoutParams = params
+                        }
+                        val qr_bitmap = datamanager!!.generateQRcode(order_box)
+                        barcode_view.setImageBitmap(qr_bitmap)
+
+                        decoratedbarcode_button.setOnTouchListener { v: View, event: MotionEvent ->
+                            when (event.action) {
+                                MotionEvent.ACTION_DOWN -> {
+                                    decoratedbarcode_button.startAnimation(
+                                        AnimationUtils.loadAnimation(
+                                            this,
+                                            R.anim.anim_pressed_button_down
+                                        )
+                                    )
+                                    false
+                                }
+
+                                MotionEvent.ACTION_UP -> {
+                                    decoratedbarcode_button.startAnimation(
+                                        AnimationUtils.loadAnimation(
+                                            this,
+                                            R.anim.anim_pressed_button_up
+                                        )
+                                    )
+                                    if (!order_box.isEmpty()) {
+                                        if (zxing_barcode_scanner.visibility == View.GONE) {
+//                                        barcode_view.visibility = View.GONE
+//                                        zxing_barcode_scanner.visibility = View.VISIBLE
+
+                                            IntentIntegrator(this).initiateScan()
+
+//                                        decoratedbarcode_button.setText(R.string.share)
+                                        } else {
+//                                        barcode_view.visibility = View.VISIBLE
+//                                        zxing_barcode_scanner.visibility = View.GONE
+//                                        zxing_barcode_scanner.decodeContinuous { result -> }
+//                                        decoratedbarcode_button.setText(R.string.decorated)
+                                        }
+                                    } else {
+                                        var builder = AlertDialog.Builder(this)
+                                        builder.setTitle(R.string.share)
+                                        builder.setMessage(R.string.share_error)
+                                        builder.setPositiveButton(R.string.yes) { dialog, which -> }
+                                        builder.show()
+                                    }
+
+                                    false
+                                }
+
+                                MotionEvent.ACTION_CANCEL -> {
+                                    decoratedbarcode_button.startAnimation(
+                                        AnimationUtils.loadAnimation(
+                                            this,
+                                            R.anim.anim_pressed_button_up
+                                        )
+                                    )
+                                    false
+                                }
+
+                                else -> false
+                            }
+                            false
+                        }
+
+                    } else {
+                        IntentIntegrator(this).initiateScan()
+                    }
+                    false
+                }
+                else -> false
+            }
+        }
+    }
+    private fun ShowOrderBoxContainerOnly(container: LinearLayout, order_box_button: Button, order_box_animation: Animation) {
+        container.removeAllViews()
+        order_box.forEach{
+            val includedLayout_menu_card_layout = layoutInflater.inflate(R.layout.menu_card_layout, container, false)
+            val includedLayout_menu_card_add_button = includedLayout_menu_card_layout.findViewById<Button>(R.id.menu_card_add_button)
+            val includedLayout_menu_card_count = includedLayout_menu_card_layout.findViewById<TextView>(R.id.menu_card_count)
+            val includedLayout_menu_card_minus_button = includedLayout_menu_card_layout.findViewById<Button>(R.id.menu_card_minus_button)
+
+            val data = menu_data!!.findElementById("id", it.id)
+            if (data != null) {
+                MenuCardSetting(container, includedLayout_menu_card_layout, data.getString("image"), data.getString("title"), data.getString("id"), data.getString("category"), data.getString("price"))
+                val order_element = order_box.findElementById(data.getString("id"))
+                if (order_element != null) {
+                    includedLayout_menu_card_count.setText(order_element.count.toString())
+                }
+                val str_id = data.getString("id")
+                MenuCardButton(includedLayout_menu_card_add_button, includedLayout_menu_card_count, includedLayout_menu_card_minus_button, str_id, order_box_button, order_box_animation)
+                includedLayout_menu_card_minus_button.setOnTouchListener { v: View, event: MotionEvent ->
+                    when (event.action) {
+                        MotionEvent.ACTION_DOWN -> {
+                            includedLayout_menu_card_minus_button.startAnimation(
+                                AnimationUtils.loadAnimation(this, R.anim.anim_pressed_button_down))
+                            false
+                        }
+                        MotionEvent.ACTION_UP -> {
+                            includedLayout_menu_card_minus_button.startAnimation(
+                                AnimationUtils.loadAnimation(this, R.anim.anim_pressed_button_up))
+
+                            val order_element = order_box.findElementById(str_id)
+                            val order_element_index = order_box.getIndexById(str_id)
+                            if (order_element != null) {
+                                if (order_element.count == 1) {
+                                    order_box.removeAt(order_element_index)
+                                    OrderBoxManagerRemoved(order_box_button)
+                                    includedLayout_menu_card_count.setText("0")
+                                    ShowOrderBoxContainerOnly(container, order_box_button, order_box_animation)
+                                }
+                                else {
+                                    includedLayout_menu_card_minus_button.startAnimation(
+                                        AnimationUtils.loadAnimation(this, R.anim.anim_pressed_button_up))
+                                    order_box[order_element_index].id = order_element.id
+                                    order_box[order_element_index].count = order_element.count - 1
+                                    includedLayout_menu_card_count.setText((order_element.count).toString())
+                                }
+                            }
+                            false
+                        }
+                        MotionEvent.ACTION_CANCEL -> {
+                            includedLayout_menu_card_minus_button.startAnimation(
+                                AnimationUtils.loadAnimation(this, R.anim.anim_pressed_button_up))
+                            false
+                        }
+                        else -> false
+                    }
+                }
             }
         }
     }
@@ -782,5 +1090,14 @@ class MainActivity : AppCompatActivity() {
             it.setTextColor(R.color.black_1)
         }
         explore_button_list[index].setTextColor(Color.BLACK)
+    }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        val result = IntentIntegrator.parseActivityResult(resultCode, data)
+        if (result.contents != null) {
+            order_box.addAll(datamanager!!.readQRcode(result.contents))
+            ShowActivityMain()
+        }
     }
 }
