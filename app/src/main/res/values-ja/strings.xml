@@ -19,6 +19,12 @@
     <string name="preset">プリセット</string>
     <string name="load">読み込む</string>
     <string name="save">保存</string>
+    <string name="share">共有</string>
+    <string name="share_error">注文表に登録されたメニューがありません。</string>
+    <string name="decorated">読み込み</string>
+    <string name="preset_name">プリセットの名称</string>
+    <string name="preset_name_error">名称を入力してください</string>
+    <string name="preset_save">プリセットに保存する</string>
     <string name="Q_save">注文表を保存しますか？</string>
     <string name="D_load">削除しますか？</string>
     <string name="order">注文表を作成する</string>

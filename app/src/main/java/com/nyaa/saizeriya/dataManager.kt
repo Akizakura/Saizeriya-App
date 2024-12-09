@@ -3,8 +3,12 @@ package com.nyaa.saizeriya
 import android.content.Context
 import android.content.SharedPreferences
 import android.content.res.AssetManager
+import android.graphics.Bitmap
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import com.google.zxing.BarcodeFormat
+import com.google.zxing.MultiFormatWriter
+import com.journeyapps.barcodescanner.BarcodeEncoder
 import org.json.JSONArray
 import org.json.JSONObject
 import java.io.InputStream
@@ -15,6 +19,7 @@ data class Order_Element(
     var count: Int
 )
 data class Preset_Element(
+    var name: String,
     var date: String,
     var items: List<Order_Element>
 )
@@ -43,6 +48,18 @@ class dataManager(private val context: Context) {
         return String(buffer, Charsets.UTF_8)
     }
 
+    fun generateQRcode(content: List<Order_Element>): Bitmap {
+        val width = 512
+        val height = 512
+        val writer = MultiFormatWriter()
+        val bitMatrix = writer.encode(content.toJson(), BarcodeFormat.QR_CODE, width, height)
+        val barcodeEncoder = BarcodeEncoder()
+        return barcodeEncoder.createBitmap(bitMatrix)
+    }
+    fun readQRcode(result: String): List<Order_Element> {
+        val gson = Gson()
+        return gson.fromJson(result, Array<Order_Element>::class.java).toList()
+    }
 }
 
 fun JSONArray.findElementById(key: String, search: String): JSONObject? {
@@ -76,6 +93,11 @@ fun List<Order_Element>.getIndexById(search: String): Int {
         }
     }
     return -1
+}
+fun List<Order_Element>.toJson(): String {
+    val gson = Gson()
+    val json = gson.toJson(this)
+    return json
 }
 fun JSONArray.findAllElementById(key: String, search: String): JSONArray? {
     var jsonArray = JSONArray()

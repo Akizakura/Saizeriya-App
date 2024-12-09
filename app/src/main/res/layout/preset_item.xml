@@ -1,64 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/remove_history_button"
     android:layout_width="match_parent"
-    android:layout_height="60dip"
+    android:layout_height="100dip"
+    android:layout_marginLeft="10dip"
+    android:layout_marginTop="10dip"
+    android:layout_marginRight="10dip"
     android:layout_weight="1"
     android:background="@drawable/order_box_empty_rounded_corner"
-    android:gravity="left|center_vertical"
-    android:orientation="vertical"
-    android:layout_marginLeft="10dip"
-    android:layout_marginRight="10dip">
+    android:orientation="vertical">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/remove_history_button"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center|left"
-        android:orientation="horizontal"
-        android:layout_marginLeft="20dip">
-
-        <TextView
-            android:id="@+id/preset_item_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Unknown"
-            android:textColor="@color/black"
-            android:textSize="18sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center|right"
-        android:orientation="horizontal"
-        android:layout_marginRight="20dip">
+        android:gravity="left|center_vertical"
+        android:orientation="vertical">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center"
-            android:orientation="horizontal">
+            android:layout_marginLeft="20dip"
+            android:gravity="center|left"
+            android:orientation="vertical">
 
-            <Button
-                android:id="@+id/preset_delete_button"
-                android:layout_width="50dip"
-                android:layout_height="50dip"
-                android:layout_marginRight="10dip"
-                android:layout_weight="1"
-                android:background="@drawable/delete_rounded_corner"
-                app:backgroundTint="@null" />
+            <TextView
+                android:id="@+id/preset_item_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Unknown"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
 
-            <Button
-                android:id="@+id/preset_load_button"
-                android:layout_width="50dip"
-                android:layout_height="50dip"
-                android:layout_weight="1"
-                android:background="@drawable/load_rounded_corner"
-                app:backgroundTint="@null" />
+            <TextView
+                android:id="@+id/preset_date_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dip"
+                android:text="yyyy-MM-dd-HH:mm:ss"
+                android:textColor="@color/black_1"
+                android:textSize="12sp" />
         </LinearLayout>
 
-    </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginRight="20dip"
+            android:gravity="center|right"
+            android:orientation="horizontal">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/preset_delete_button"
+                    android:layout_width="50dip"
+                    android:layout_height="50dip"
+                    android:layout_marginRight="10dip"
+                    android:layout_weight="1"
+                    android:background="@drawable/delete_rounded_corner"
+                    app:backgroundTint="@null" />
+
+                <Button
+                    android:id="@+id/preset_load_button"
+                    android:layout_width="50dip"
+                    android:layout_height="50dip"
+                    android:layout_weight="1"
+                    android:background="@drawable/load_rounded_corner"
+                    app:backgroundTint="@null" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

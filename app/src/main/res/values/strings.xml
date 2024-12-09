@@ -19,6 +19,12 @@
     <string name="preset">preset</string>
     <string name="load">Load</string>
     <string name="save">Save</string>
+    <string name="share">Share</string>
+    <string name="share_error">There is no menu registered in the order table.</string>
+    <string name="decorated">Decorated</string>
+    <string name="preset_name">Preset Name</string>
+    <string name="preset_name_error">Please enter your name</string>
+    <string name="preset_save">Save to preset</string>
     <string name="Q_save">Do you want to save?</string>
     <string name="D_load">Do you want to delete it?</string>
     <string name="order">Create an order book</string>
